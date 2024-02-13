@@ -1,10 +1,5 @@
 import React,{useEffect ,useRef,useState} from 'react';
 import { Button, Carousel } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -19,32 +14,53 @@ const  CarouselWithMusic =()=>{
    const [index, setIndex] = useState(0);
 
    const [audioLoaded, setAudioLoaded] = useState(false);
+   console.log("audioLoaded",audioLoaded)
+
+   var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
    
    const handleSelect = (selectedIndex) => {
      setIndex(selectedIndex);
    };
-   useEffect(() => {
-       const handleInteraction = () => {
-           if (!audioLoaded) {
-               setAudioLoaded(true);
-            }
-        };
+//    useEffect(() => {
+//        const handleInteraction = () => {
+//            if (!audioLoaded) {
+//                setAudioLoaded(true);
+//             }
+//         };
         
        
-     document.addEventListener('mousedown', handleInteraction);
-     document.addEventListener('touchstart', handleInteraction);
+//      document.addEventListener('mousedown', handleInteraction);
+//      document.addEventListener('touchstart', handleInteraction);
  
-     return () => {
-       document.removeEventListener('mousedown', handleInteraction);
-       document.removeEventListener('touchstart', handleInteraction);
-     };
-   }, [audioLoaded]);
+//      return () => {
+//        document.removeEventListener('mousedown', handleInteraction);
+//        document.removeEventListener('touchstart', handleInteraction);
+//      };
+//    }, [audioLoaded]);
+
  
-   useEffect(() => {
-     if (audioLoaded && audioRef.current) {
-       audioRef.current.play();
-     }
-   }, [audioLoaded]);
+//    useEffect(() => {
+//      if (audioLoaded && audioRef.current) {
+//        audioRef.current.play();
+//      }
+//    }, [audioLoaded]);
+function play(){
+    audioRef.current.play();
+
+}
+
+   useEffect(()=>{
+    setTimeout(()=>{
+
+    play();
+    },5000)
+   },[])
 
     return (
       <div>
@@ -60,19 +76,7 @@ const  CarouselWithMusic =()=>{
             <img src={sleep} alt="Slide 3" />
           </div>
         </Slider> */}
-         {/* <Container>
-      <Row>
-        <Col xs={6} md={4}>
-          <Image src={sky} rounded />
-        </Col>
-        <Col xs={6} md={4}>
-          <Image src={shower} roundedCircle />
-        </Col>
-        <Col xs={6} md={4}>
-          <Image src={sleep} thumbnail />
-        </Col>
-      </Row>
-    </Container> */}
+      
         <Carousel interval={3000} activeIndex={index} onSelect={handleSelect} wrap={true}>
           <Carousel.Item>
           
