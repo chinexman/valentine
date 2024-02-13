@@ -7,6 +7,8 @@ import sound from './assets/thousandyears.mp3'
 import sky from './assets/sky.jpg'
 import sleep from './assets/sleep.jpg'
 import shower from './assets/shower.jpg'
+import './home.css'
+
 
 
 const  CarouselWithMusic =()=>{
@@ -55,15 +57,15 @@ function play(){
 
 }
 
-   useEffect(()=>{
-    setTimeout(()=>{
+//    useEffect(()=>{
+//     setTimeout(()=>{
 
-    play();
-    },5000)
-   },[])
+//     play();
+//     },5000)
+//    },[])
 
     return (
-      <div>
+      <div  className='background-container'>
         {/* <Slider {...settings}>
           <div>
             <img src={sky} alt="Slide 1" />
@@ -77,27 +79,36 @@ function play(){
           </div>
         </Slider> */}
       
-        <Carousel interval={3000} activeIndex={index} onSelect={handleSelect} wrap={true}>
-          <Carousel.Item>
-          
-            <img className=" d-block w-100 img-fluid" src={sky} alt="Slide 1" />
+        <Carousel  interval={3000} activeIndex={index} onSelect={handleSelect} wrap={true}>
+          <Carousel.Item >
+          <div className='image-container'>
+
+            <img className="first" src={sky} alt="Slide 1" />
             <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
+          </div>
           </Carousel.Item>
           <Carousel.Item>
-            <img className=" d-block w-100 img-fluid" src={shower} alt="Slide 2" />
+          <div className='image-container'>
+
+            <img className=" first" src={shower} alt="Slide 2" />
             <Carousel.Caption>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            
           </Carousel.Caption>
+          </div>
           </Carousel.Item>
           <Carousel.Item>
-            <img className=" d-block w-100 img-fluid" src={sleep} alt="Slide 3" />
+          <div className='image-container'>
+
+            <img className="first" src={sleep} alt="Slide 3" />
+            </div>
           </Carousel.Item>
         </Carousel>
-        {/* <Button onClick={play}>play sound</Button> */}
+        <Button className="valentine" onClick={play}>play sound</Button>
         <audio ref={audioRef} src={sound} autoPlay loop />
       </div>
     );
