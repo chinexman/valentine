@@ -10,9 +10,10 @@
   } */
 
   .valentine{
-    background-color: red;
-    color: white;
+  border-color: #FF0000;
   }
+
+ 
   .first{
     width: 100%;
     height: 150%;
@@ -42,6 +43,9 @@ align-items: center;
     margin-left: 20%;
  
   }
+}
+.val-col{
+  color: #FF0000;
 }
 /* 
   @media (min-width: 768px) {

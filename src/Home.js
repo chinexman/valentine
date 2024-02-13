@@ -14,16 +14,18 @@ import './home.css'
 const  CarouselWithMusic =()=>{
    const audioRef = useRef();
    const [index, setIndex] = useState(0);
+   const [audioPlaying, setAudioPlaying] = useState(true);
 
    const [audioLoaded, setAudioLoaded] = useState(false);
    console.log("audioLoaded",audioLoaded)
 
-   var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+   const toggleAudio = () => {
+    if (audioPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setAudioPlaying(!audioPlaying);
   };
    
    const handleSelect = (selectedIndex) => {
@@ -85,8 +87,8 @@ function play(){
 
             <img className="first" src={sky} alt="Slide 1" />
             <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3 className='val-col'>My valentine</h3>
+            <p className='val-col'>Home is wherever I'm with you.</p>
           </Carousel.Caption>
           </div>
           </Carousel.Item>
@@ -95,9 +97,8 @@ function play(){
 
             <img className=" first" src={shower} alt="Slide 2" />
             <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            
+            <h3 className='val-col'>My valentine</h3>
+            <p className='val-col'>We have a forever type of love.</p>
           </Carousel.Caption>
           </div>
           </Carousel.Item>
@@ -105,10 +106,15 @@ function play(){
           <div className='image-container'>
 
             <img className="first" src={sleep} alt="Slide 3" />
+            <Carousel.Caption>
+            <h3 className='val-col'>My valentine</h3>
+            <p className='val-col'>To the only person I would share my snacks with.</p>
+          </Carousel.Caption>
             </div>
           </Carousel.Item>
         </Carousel>
-        <Button className="valentine" onClick={play}>play sound</Button>
+        <Button   className='valentine'      style={{ backgroundColor: audioPlaying ? 'white' : 'red', color:audioPlaying ?  'red' : 'white' }}
+ onClick={toggleAudio}>{audioPlaying ? 'Pause Audio' : 'Play Audio'}</Button>
         <audio ref={audioRef} src={sound} autoPlay loop />
       </div>
     );
