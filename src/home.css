@@ -35,6 +35,13 @@
 /* float:right */
 align-items: center;
   }
+  @media (max-width: 500px) {
+    .background-container {
+      height: 900px;
+
+    }
+  }
+
 
   @media (min-width: 960px) {
 
