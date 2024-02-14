@@ -22,7 +22,7 @@
   }
 
   .background-container {
-    background-image: url('./assets/valentine.jpeg');
+    background-image: url('./assets/valbackground.png');
     background-size: cover;
     background-position: center;
     /* align-self: flex-end; */
